@@ -26,7 +26,7 @@ document.querySelector('.buttons').onclick = (event) => {
     if (event.target.classList.contains(('ac'))) return;
 
     out.textContent = '';
-    const key = event.target.textContent;
+    let key = event.target.textContent;
 
     if (digit.includes(key)) {
         if (b === '' && sign === '') {
@@ -75,12 +75,16 @@ document.querySelector('.buttons').onclick = (event) => {
     if (key === '+/-') {
         if (a !== '' && b === '') {
             a = (+a) * -1;
-            out.textContent = a
+            out.textContent = a;
+            return
         }
         if (a !== '' && b !== '') {
             b = (+b) * -1;
-            out.textContent = b
+            out.textContent = b;
+            return;
         }
+        out.textContent = '0';
+        console.log('+/-');
     }
 
     if (key === '=') {
